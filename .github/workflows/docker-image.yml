@@ -37,7 +37,7 @@ jobs:
       
     - name: 2. Change Docker tags
       run: |
-        cat test.yaml | sed "s/image: purecloud75\/node-app:.*/images: purecloud75\/node-app:${{ github.sha }}/g"
+        sed -i "s/image: purecloud75\/node-app:.*/images: purecloud75\/node-app:${{ github.sha }}/g" hostservice-deploy.yaml
         git config --global user.email "purecloud75@gmail.com"
         git config --global user.name "purecloud75"
         git commit -am "triggered by github action"
